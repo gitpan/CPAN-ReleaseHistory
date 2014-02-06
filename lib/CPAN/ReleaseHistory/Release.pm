@@ -1,6 +1,6 @@
 package CPAN::ReleaseHistory::Release;
 {
-  $CPAN::ReleaseHistory::Release::VERSION = '0.01';
+  $CPAN::ReleaseHistory::Release::VERSION = '0.02';
 }
 
 use Moo;
