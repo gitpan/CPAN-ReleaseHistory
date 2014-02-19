@@ -1,8 +1,5 @@
 package CPAN::ReleaseHistory;
-{
-  $CPAN::ReleaseHistory::VERSION = '0.02';
-}
-
+$CPAN::ReleaseHistory::VERSION = '0.03';
 use 5.006;
 use Moo;
 use File::HomeDir;
@@ -36,7 +33,7 @@ sub release_iterator
     my $self = shift;
 
     require CPAN::ReleaseHistory::ReleaseIterator;
-    return CPAN::ReleaseHistory::ReleaseIterator->new( history => $self );
+    return CPAN::ReleaseHistory::ReleaseIterator->new( history => $self, @_ );
 }
 
 sub BUILD
@@ -223,6 +220,23 @@ Other methods will be added as required / requested.
 =head2 release_iterator()
 
 See the SYNOPSIS.
+
+This supports one optional argument, C<well_formed>, which if true says that the
+iterator should only return releases where the dist name and author's PAUSE id
+could be found:
+
+ my $iterator = CPAN::ReleaseHistory->new()->release_iterator(
+                    well_formed => 1
+                );
+
+This saves you from having to write code like the following:
+
+ while (my $release = $iterator->next_release) {
+    next unless defined($release->distinfo);
+    next unless defined($release->distinfo->dist);
+    next unless defined($release->distinfo->cpanid);
+    ...
+ }
 
 =head1 NOTES
 

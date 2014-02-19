@@ -1,17 +1,21 @@
 package CPAN::ReleaseHistory::ReleaseIterator;
-{
-  $CPAN::ReleaseHistory::ReleaseIterator::VERSION = '0.02';
-}
-
+$CPAN::ReleaseHistory::ReleaseIterator::VERSION = '0.03';
 use Moo;
 use CPAN::ReleaseHistory;
 use CPAN::ReleaseHistory::Release;
+use CPAN::DistnameInfo;
 use autodie;
 
 has 'history' =>
     (
         is      => 'ro',
         default => sub { return PAUSE::Packages->new(); },
+    );
+
+has 'well_formed' =>
+    (
+        is      => 'ro',
+        default => sub { 0 },
     );
 
 has _fh => ( is => 'rw' );
@@ -29,14 +33,28 @@ sub next_release
         $fh = $self->_fh;
     }
 
-    my $line = <$fh>;
+    RELEASE:
+    while (1) {
+        my $line = <$fh>;
 
-    if (defined($line)) {
-        chomp($line);
-        my ($path, $time, $size) = split(/\s+/, $line);
-        return CPAN::ReleaseHistory::Release->new(path => $path, timestamp => $time, size => $size);
-    } else {
-        return undef;
+        if (defined($line)) {
+            chomp($line);
+            my ($path, $time, $size) = split(/\s+/, $line);
+            my @args                 = (path => $path, timestamp => $time, size => $size);
+
+            if ($self->well_formed) {
+                my $distinfo = CPAN::DistnameInfo->new($path);
+
+                next RELEASE unless defined($distinfo)
+                                 && defined($distinfo->dist)
+                                 && defined($distinfo->cpanid);
+                push(@args, distinfo => $distinfo);
+            }
+
+            return CPAN::ReleaseHistory::Release->new(@args);
+        } else {
+            return undef;
+        }
     }
 }
 
