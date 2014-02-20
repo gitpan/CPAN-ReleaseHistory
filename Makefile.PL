@@ -18,6 +18,7 @@ my %WriteMakefileArgs = (
   },
   "DISTNAME" => "CPAN-ReleaseHistory",
   "EXE_FILES" => [
+    "bin/cpan-heavyweights",
     "bin/cpan-release-counts"
   ],
   "LICENSE" => "perl",
@@ -40,7 +41,7 @@ my %WriteMakefileArgs = (
   "TEST_REQUIRES" => {
     "Test::More" => "0.88"
   },
-  "VERSION" => "0.04",
+  "VERSION" => "0.05",
   "test" => {
     "TESTS" => "t/*.t"
   }

@@ -1,5 +1,5 @@
 package CPAN::ReleaseHistory::Release;
-$CPAN::ReleaseHistory::Release::VERSION = '0.04';
+$CPAN::ReleaseHistory::Release::VERSION = '0.05';
 use Moo;
 use CPAN::DistnameInfo;
 
