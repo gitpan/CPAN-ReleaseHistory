@@ -5,6 +5,7 @@ MANIFEST
 META.yml
 Makefile.PL
 README
+bin/cpan-release-counts
 dist.ini
 lib/CPAN/ReleaseHistory.pm
 lib/CPAN/ReleaseHistory/Release.pm

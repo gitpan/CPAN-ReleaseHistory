@@ -2,6 +2,7 @@
 
 use strict;
 use warnings;
+use 5.006;
 
 use Test::More 0.88 tests => 3;
 use CPAN::ReleaseHistory;
@@ -39,7 +40,7 @@ END_EXPECTED
 my $string = '';
 
 while (my $release = $iterator->next_release) {
-    $string .= ($release->distinfo->dist // 'undef')
+    $string .= ($release->distinfo->dist || 'undef')
                .' '
                .$release->timestamp
                .' '

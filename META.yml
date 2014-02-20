@@ -4,8 +4,6 @@ author:
   - 'Neil Bowers <neil@bowers.com>'
 build_requires:
   Test::More: 0.88
-  strict: 0
-  warnings: 0
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
@@ -21,13 +19,16 @@ requires:
   File::HomeDir: 0
   File::Spec::Functions: 0
   File::Temp: 0
+  Getopt::Long: 0
   HTTP::Date: 0
   HTTP::Tiny: 0
   Moo: 0
   PerlIO::gzip: 0
   autodie: 0
   perl: 5.006
+  strict: 0
+  warnings: 0
 resources:
   homepage: https://github.com/neilbowers/CPAN-ReleaseHistory
   repository: https://github.com/neilbowers/CPAN-ReleaseHistory.git
-version: 0.03
+version: 0.04
