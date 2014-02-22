@@ -1,5 +1,5 @@
 package CPAN::ReleaseHistory;
-$CPAN::ReleaseHistory::VERSION = '0.07';
+$CPAN::ReleaseHistory::VERSION = '0.08';
 use 5.006;
 use Moo;
 use File::HomeDir;

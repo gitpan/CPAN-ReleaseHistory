@@ -1,5 +1,5 @@
 package CPAN::ReleaseHistory::ReleaseIterator;
-$CPAN::ReleaseHistory::ReleaseIterator::VERSION = '0.07';
+$CPAN::ReleaseHistory::ReleaseIterator::VERSION = '0.08';
 use Moo;
 use CPAN::ReleaseHistory;
 use CPAN::ReleaseHistory::Release;
