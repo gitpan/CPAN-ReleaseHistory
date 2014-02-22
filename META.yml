@@ -31,4 +31,4 @@ requires:
 resources:
   homepage: https://github.com/neilbowers/CPAN-ReleaseHistory
   repository: https://github.com/neilbowers/CPAN-ReleaseHistory.git
-version: 0.06
+version: 0.07
