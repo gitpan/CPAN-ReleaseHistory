@@ -1,5 +1,5 @@
 package CPAN::ReleaseHistory::ReleaseIterator;
-$CPAN::ReleaseHistory::ReleaseIterator::VERSION = '0.08';
+$CPAN::ReleaseHistory::ReleaseIterator::VERSION = '0.10';
 use Moo;
 use CPAN::ReleaseHistory;
 use CPAN::ReleaseHistory::Release;
@@ -24,9 +24,14 @@ sub next_release
 {
     my $self = shift;
     my $fh;
+    local $_;
 
     if (not defined $self->_fh) {
-        open($fh, '<', $self->history->path());
+        $fh = $self->history->open_file();
+
+        # skip the header line.
+        # TODO: should confirm that it's the format we expect / support
+        my $header_line = <$fh>;
         $self->_fh($fh);
     }
     else {
