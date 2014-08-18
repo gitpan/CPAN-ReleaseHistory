@@ -5,9 +5,9 @@ author:
 build_requires:
   Test::More: '0.88'
 configure_requires:
-  ExtUtils::MakeMaker: '6.30'
+  ExtUtils::MakeMaker: '0'
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 5.016, CPAN::Meta::Converter version 2.141170'
+generated_by: 'Dist::Zilla version 5.020, CPAN::Meta::Converter version 2.141170'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -26,4 +26,4 @@ requires:
 resources:
   homepage: https://github.com/neilbowers/CPAN-ReleaseHistory
   repository: https://github.com/neilbowers/CPAN-ReleaseHistory.git
-version: '0.10'
+version: '0.11'
